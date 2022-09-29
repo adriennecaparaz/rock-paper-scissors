@@ -29,6 +29,11 @@ main {
     max-width: 75vw;
 }
 
+#score {
+    padding: 10px 0;
+    text-align: center;
+}
+
 .selection-container {
     display: flex;
     justify-content: space-between;
