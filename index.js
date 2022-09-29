@@ -1,76 +1,92 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
+const buttons = document.querySelectorAll('button.choice');
+const dialogue = document.querySelector('#dialogue');
+const score = document.querySelector('#score');
+
+let roundResult = 2;
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     return CHOICES[Math.floor(Math.random() * CHOICES.length)];
 }
 
-function getPlayerChoice() {
-    let playerSelection = "";
-    do {
-        playerSelection = prompt("SELECT ROCK, PAPER, OR SCISSORS:").toLowerCase();
-    } while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors");
-    return playerSelection;
+function updateScore(roundResult) {
+    switch (roundResult) {
+        case 0:
+            playerScore++;
+            break;
+        case 1:
+            computerScore++;
+            break;
+        default:
+            break;
+    }
+    score.textContent = `YOU: ${playerScore} / CPU: ${computerScore}`;
+    if (playerScore == 5 || computerScore == 5) endGame();
 }
 
-function playRound(playerSelection, computerSelection) {
+function resetScore() {
+    playerScore = 0;
+    computerScore = 0;
+}
+
+function playRound(e) {
+    const computerSelection = getComputerChoice();
+    const playerSelection = e.target.id;
+    dialogue.innerHTML = `* CPU chose ${computerSelection.toUpperCase()}!<br>`;
     if (playerSelection == computerSelection) {
-        alert("TIE!");
-        return 2;
+        dialogue.innerHTML += "* TIE!";
+        updateScore(2);
+        return;
     }
     switch (playerSelection) {
         case "rock":
             switch (computerSelection) {
                 case "scissors":
-                    alert("You Win! ROCK beats SCISSORS!");
-                    return 0;
+                    dialogue.innerHTML += "* You won the round!<br>* ROCK beats SCISSORS!";
+                    updateScore(0);
+                    return;
                 case "paper":
-                    alert("You Lose! PAPER beats ROCK!");
-                    return 1;
+                    dialogue.innerHTML += "* You lost the round!<br>* PAPER beats ROCK!";
+                    updateScore(1);
+                    return;
             }
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    alert("You Win! PAPER beats ROCK!");
-                    return 0;
+                    dialogue.innerHTML += "* You won the round!<br>* PAPER beats ROCK!";
+                    updateScore(0);
+                    return;
                 case "scissors":
-                    alert("You Lose! SCISSORS beats PAPER!");
-                    return 1;
+                    dialogue.innerHTML += "* You lost the round!<br>* SCISSORS beats PAPER!";
+                    updateScore(1);
+                    return;
             }
         case "scissors":
             switch (computerSelection) {
                 case "paper":
-                    alert("You Win! SCISSORS beats PAPER!");
-                    return 0;
+                    dialogue.innerHTML += "* You won the round!<br>* SCISSORS beats PAPER!";
+                    updateScore(0);
+                    return;
                 case "rock":
-                    alert("You Lose! ROCK beats SCISSORS!");
-                    return 1;
+                    dialogue.innerHTML += "* You lost the round!<br>* ROCK beats SCISSORS!";
+                    updateScore(1);
+                    return;
             }
     }
 }
 
-function game() {
-    let roundResult = 2;
-    let playerScore = 0;
-    let computerScore = 0;
-    
-    for (let i = 1; i < 6; i++) {
-        do {
-            roundResult = playRound(getPlayerChoice(), getComputerChoice());
-        } while (roundResult == 2);
-        switch (roundResult) {
-            case 0:
-                playerScore++;
-            case 1:
-                computerScore++;
-        }
-    }
-    
+function endGame() {
     if (playerScore > computerScore) {
-        alert("YOU WIN! " + playerScore + ":" + computerScore);
+        dialogue.innerHTML = "* YOU WON!<br>* PLAY AGAIN?";
     }
     else {
-        alert("YOU LOSE! " + playerScore + ":" + computerScore);
+        dialogue.innerHTML = "* YOU LOST!<br>* PLAY AGAIN?";
     }
+    resetScore();
 }
 
-game();
+buttons.forEach(button => {
+    button.addEventListener('click', playRound);
+});
