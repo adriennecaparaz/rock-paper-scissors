@@ -47,7 +47,7 @@ main {
     color: #ff992d;
     border: #ff992d solid 3px;
     padding: 5px 0;
-    flex-grow: 1;
+    flex: 1 1 0;
 }
 
 .selection-container button:hover {
