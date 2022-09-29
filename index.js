@@ -1,5 +1,7 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
 const buttons = document.querySelectorAll('.choice');
+const dialogue = document.querySelector('#dialogue');
+console.log(dialogue);
 
 buttons.forEach(button => {
     addEventListener('click', playRound);
@@ -11,37 +13,37 @@ function getComputerChoice() {
 
 function playRound(e) {
     const computerSelection = getComputerChoice();
-    const playerSelection = e.target.id;inde
+    const playerSelection = e.target.id;
     if (playerSelection == computerSelection) {
-        alert("TIE!");
+        dialogue.textContent = "TIE!";
         return 2;
     }
     switch (playerSelection) {
         case "rock":
             switch (computerSelection) {
                 case "scissors":
-                    alert("You Win! ROCK beats SCISSORS!");
+                    dialogue.textContent = "You Win! ROCK beats SCISSORS!";
                     return 0;
                 case "paper":
-                    alert("You Lose! PAPER beats ROCK!");
+                    dialogue.textContent = "You Lose! PAPER beats ROCK!";
                     return 1;
             }
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    alert("You Win! PAPER beats ROCK!");
+                    dialogue.textContent = "You Win! PAPER beats ROCK!";
                     return 0;
                 case "scissors":
-                    alert("You Lose! SCISSORS beats PAPER!");
+                    dialogue.textContent = "You Lose! SCISSORS beats PAPER!";
                     return 1;
             }
         case "scissors":
             switch (computerSelection) {
                 case "paper":
-                    alert("You Win! SCISSORS beats PAPER!");
+                    dialogue.textContent = "You Win! SCISSORS beats PAPER!";
                     return 0;
                 case "rock":
-                    alert("You Lose! ROCK beats SCISSORS!");
+                    dialogue.textContent = "You Lose! ROCK beats SCISSORS!";
                     return 1;
             }
     }
@@ -65,10 +67,10 @@ function game() {
     // }
     
     if (playerScore > computerScore) {
-        alert("YOU WIN! " + playerScore + ":" + computerScore);
+        dialogue.textContent = "YOU WIN! " + playerScore + ":" + computerScore;
     }
     else {
-        alert("YOU LOSE! " + playerScore + ":" + computerScore);
+        dialogue.textContent = "YOU LOSE! " + playerScore + ":" + computerScore;
     }
 }
 
