@@ -1,11 +1,6 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
 const buttons = document.querySelectorAll('.choice');
 const dialogue = document.querySelector('#dialogue');
-console.log(dialogue);
-
-buttons.forEach(button => {
-    addEventListener('click', playRound);
-})
 
 function getComputerChoice() {
     return CHOICES[Math.floor(Math.random() * CHOICES.length)];
@@ -66,6 +61,7 @@ function game() {
     //     }
     // }
     
+    
     if (playerScore > computerScore) {
         dialogue.textContent = "YOU WIN! " + playerScore + ":" + computerScore;
     }
@@ -74,4 +70,8 @@ function game() {
     }
 }
 
-// game();
+buttons.forEach(button => {
+    addEventListener('click', playRound);
+});
+
+game();
