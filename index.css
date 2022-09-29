@@ -28,3 +28,26 @@ main {
     width: 450px;
     max-width: 75vw;
 }
+
+.selection-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.selection-container button {
+    background-color: transparent;
+    font-family: 'DTM', monospace;
+    font-size: 24px;
+    color: #ff992d;
+    border: #ff992d solid 3px;
+    padding: 5px 10px;
+    flex-grow: 1;
+}
+
+.selection-container button:hover {
+    cursor: pointer;
+    color: #000;
+    background-color: #ff992d;
+    transition: 0.2s;
+}
