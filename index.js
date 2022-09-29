@@ -34,8 +34,9 @@ function resetScore() {
 function playRound(e) {
     const computerSelection = getComputerChoice();
     const playerSelection = e.target.id;
+    dialogue.innerHTML = `* CPU chose ${computerSelection.toUpperCase()}!<br>`;
     if (playerSelection == computerSelection) {
-        dialogue.textContent = "* TIE!";
+        dialogue.innerHTML += "* TIE!";
         updateScore(2);
         return;
     }
@@ -43,33 +44,33 @@ function playRound(e) {
         case "rock":
             switch (computerSelection) {
                 case "scissors":
-                    dialogue.innerHTML = "* You won the round<br>* ROCK beats SCISSORS!";
+                    dialogue.innerHTML += "* You won the round!<br>* ROCK beats SCISSORS!";
                     updateScore(0);
                     return;
                 case "paper":
-                    dialogue.innerHTML = "* You lost the round<br>* PAPER beats ROCK!";
+                    dialogue.innerHTML += "* You lost the round!<br>* PAPER beats ROCK!";
                     updateScore(1);
                     return;
             }
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    dialogue.innerHTML = "* You won the round<br>* PAPER beats ROCK!";
+                    dialogue.innerHTML += "* You won the round!<br>* PAPER beats ROCK!";
                     updateScore(0);
                     return;
                 case "scissors":
-                    dialogue.innerHTML = "* You lost the round!<br>* SCISSORS beats PAPER!";
+                    dialogue.innerHTML += "* You lost the round!<br>* SCISSORS beats PAPER!";
                     updateScore(1);
                     return;
             }
         case "scissors":
             switch (computerSelection) {
                 case "paper":
-                    dialogue.innerHTML = "* You won the round!<br>* SCISSORS beats PAPER!";
+                    dialogue.innerHTML += "* You won the round!<br>* SCISSORS beats PAPER!";
                     updateScore(0);
                     return;
                 case "rock":
-                    dialogue.innerHTML = "* You lost the round!<br>* ROCK beats SCISSORS!";
+                    dialogue.innerHTML += "* You lost the round!<br>* ROCK beats SCISSORS!";
                     updateScore(1);
                     return;
             }
