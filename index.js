@@ -1,5 +1,5 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
-const buttons = document.querySelectorAll('.choice');
+const buttons = document.querySelectorAll('button.choice');
 const dialogue = document.querySelector('#dialogue');
 const score = document.querySelector('#score');
 
@@ -88,5 +88,5 @@ function endGame() {
 }
 
 buttons.forEach(button => {
-    addEventListener('click', playRound);
+    button.addEventListener('click', playRound);
 });
