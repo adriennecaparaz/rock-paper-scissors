@@ -1,18 +1,17 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
+const buttons = document.querySelectorAll('.choice');
+
+buttons.forEach(button => {
+    addEventListener('click', playRound);
+})
 
 function getComputerChoice() {
     return CHOICES[Math.floor(Math.random() * CHOICES.length)];
 }
 
-function getPlayerChoice() {
-    let playerSelection = "";
-    do {
-        playerSelection = prompt("SELECT ROCK, PAPER, OR SCISSORS:").toLowerCase();
-    } while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors");
-    return playerSelection;
-}
-
-function playRound(playerSelection, computerSelection) {
+function playRound(e) {
+    const computerSelection = getComputerChoice();
+    const playerSelection = e.target.id;inde
     if (playerSelection == computerSelection) {
         alert("TIE!");
         return 2;
@@ -53,17 +52,17 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     
-    for (let i = 1; i < 6; i++) {
-        do {
-            roundResult = playRound(getPlayerChoice(), getComputerChoice());
-        } while (roundResult == 2);
-        switch (roundResult) {
-            case 0:
-                playerScore++;
-            case 1:
-                computerScore++;
-        }
-    }
+    // for (let i = 1; i < 6; i++) {
+    //     do {
+    //         roundResult = playRound(getPlayerChoice(), getComputerChoice());
+    //     } while (roundResult == 2);
+    //     switch (roundResult) {
+    //         case 0:
+    //             playerScore++;
+    //         case 1:
+    //             computerScore++;
+    //     }
+    // }
     
     if (playerScore > computerScore) {
         alert("YOU WIN! " + playerScore + ":" + computerScore);
@@ -73,4 +72,4 @@ function game() {
     }
 }
 
-game();
+// game();
