@@ -35,7 +35,7 @@ function playRound(e) {
     const computerSelection = getComputerChoice();
     const playerSelection = e.target.id;
     if (playerSelection == computerSelection) {
-        dialogue.textContent = "TIE!";
+        dialogue.textContent = "* TIE!";
         updateScore(2);
         return;
     }
@@ -43,33 +43,33 @@ function playRound(e) {
         case "rock":
             switch (computerSelection) {
                 case "scissors":
-                    dialogue.textContent = "You Win! ROCK beats SCISSORS!";
+                    dialogue.innerHTML = "* You won the round<br>* ROCK beats SCISSORS!";
                     updateScore(0);
                     return;
                 case "paper":
-                    dialogue.textContent = "You Lose! PAPER beats ROCK!";
+                    dialogue.innerHTML = "* You lost the round<br>* PAPER beats ROCK!";
                     updateScore(1);
                     return;
             }
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    dialogue.textContent = "You Win! PAPER beats ROCK!";
+                    dialogue.innerHTML = "* You won the round<br>* PAPER beats ROCK!";
                     updateScore(0);
                     return;
                 case "scissors":
-                    dialogue.textContent = "You Lose! SCISSORS beats PAPER!";
+                    dialogue.innerHTML = "* You lost the round!<br>* SCISSORS beats PAPER!";
                     updateScore(1);
                     return;
             }
         case "scissors":
             switch (computerSelection) {
                 case "paper":
-                    dialogue.textContent = "You Win! SCISSORS beats PAPER!";
+                    dialogue.innerHTML = "* You won the round!<br>* SCISSORS beats PAPER!";
                     updateScore(0);
                     return;
                 case "rock":
-                    dialogue.textContent = "You Lose! ROCK beats SCISSORS!";
+                    dialogue.innerHTML = "* You lost the round!<br>* ROCK beats SCISSORS!";
                     updateScore(1);
                     return;
             }
@@ -78,10 +78,10 @@ function playRound(e) {
 
 function endGame() {
     if (playerScore > computerScore) {
-        dialogue.textContent = "YOU WIN! " + playerScore + ":" + computerScore + "\n PLAY AGAIN?";
+        dialogue.innerHTML = "* YOU WON!<br>* PLAY AGAIN?";
     }
     else {
-        dialogue.textContent = "YOU LOSE! " + playerScore + ":" + computerScore + "\n PLAY AGAIN?";
+        dialogue.innerHTML = "* YOU LOST!<br>* PLAY AGAIN?";
     }
     resetScore();
 }

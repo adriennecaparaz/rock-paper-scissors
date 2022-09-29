@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'DTM';
+    src: url('./fonts/DeterminationMonoWeb.woff') format('woff'),
+        url('./fonts/DTM-Mono.otf') format('opentype');
+}
+
+body {
+    box-sizing: border-box;
+    margin: auto;
+    background-color: #000;
+    font-family: 'DTM', monospace;
+    font-size: 24px;
+    color: #fff;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    max-height: -webkit-fill-available;
+    justify-content: center;
+    align-items: center;
+}
+
+#dialogue {
+    border: #fff solid 5px;
+    padding: 20px;
+    height: 100px;
+    width: 450px;
+    max-width: 75vw;
+}
